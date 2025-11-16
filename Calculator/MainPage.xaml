@@ -16,7 +16,25 @@
            <RowDefinition Height="3*"></RowDefinition>
        </Grid.RowDefinitions>
        
-       <Entry x:Name="Display" Grid.Row="0" Grid.Column="0" Keyboard="Numeric" Grid.ColumnSpan="4" ></Entry>
+      <!-- <Entry x:Name="Display" Grid.Row="0" Grid.Column="0" Keyboard="Numeric" Grid.ColumnSpan="4" ></Entry>  -->
+     
+      <VerticalStackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" 
+                           Padding="10" 
+                           VerticalOptions="End"
+                           Spacing="5">
+          <Label x:Name="OperationDisplay" 
+                 Text="" 
+                 FontSize="20" 
+                 HorizontalTextAlignment="End"
+                 TextColor="Gray"
+                 LineBreakMode="TailTruncation"/>
+          <Label x:Name="ResultDisplay" 
+                 Text="0" 
+                 FontSize="40" 
+                 FontAttributes="Bold"
+                 HorizontalTextAlignment="End"
+                 LineBreakMode="TailTruncation"/>
+      </VerticalStackLayout>
        
        <Button x:Name="OperatorButtonAllClear" Clicked="OnOperatorPressed" Text="C" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"  CornerRadius="30" ></Button>
        <Button x:Name="OperatorButtonClear" Clicked="OnOperatorPressed" Text="CE" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2"  CornerRadius="30" ></Button>
