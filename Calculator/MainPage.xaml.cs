@@ -41,6 +41,34 @@ public partial class MainPage : ContentPage
             return;
         }
         
+        ///////
+        
+        if (pressedButton.Text == "√")
+        {
+            double number = Double.Parse(Display.Text);
+            double result = Math.Sqrt(number);
+
+            Display.Text = result.ToString();
+            currentOperator = "";
+            isFirstNumberAfterOperator = true;
+            return;
+        }
+        
+        if (pressedButton.Text == "x²")
+        {
+            double number = Double.Parse(Display.Text);
+            double result = number * number;
+
+            Display.Text = result.ToString();
+            currentOperator = "";
+            isFirstNumberAfterOperator = true;
+            return;
+        }
+        
+        ////////
+        
+        
+        
         isFirstNumberAfterOperator = true;
         if (currentOperator == "")
         {
@@ -59,6 +87,7 @@ public partial class MainPage : ContentPage
                 case "-" :   result = firstNumber - secondNumber; break;
                 case "*" :   result = firstNumber * secondNumber; break;
                 case "/" :   result = firstNumber / secondNumber; break;
+                case "%" :   result = firstNumber % secondNumber; break;
                 
                 
             }
