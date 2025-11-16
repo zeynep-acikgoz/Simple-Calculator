@@ -45,14 +45,63 @@ public partial class MainPage : ContentPage
         }
     }
 
+    
     private void OnOperatorPressed(object? sender, EventArgs e)
     {
         Button pressedButton = sender as Button;
         
         
-        ///
+        // *** YENİ: C butonu - Her şeyi temizle ***
+        if (pressedButton.Text == "C")
+        {
+            firstNumber = 0;
+            secondNumber = 0;
+            currentOperator = "";
+            currentInput = "";
+            isFirstNumberAfterOperator = true;
+            OperationDisplay.Text = "";
+            ResultDisplay.Text = "0";
+            return;
+        }
+        
+        // *** YENİ: CE butonu - Son haneleri sil (backspace) ***
+        if (pressedButton.Text == "CE")
+        {
+            if (currentInput.Length > 0)
+            {
+                // Son karakteri sil
+                currentInput = currentInput.Substring(0, currentInput.Length - 1);
+                
+                // Eğer hiç karakter kalmadıysa "0" göster
+                if (currentInput.Length == 0)
+                {
+                    if (currentOperator != "")
+                    {
+                        ResultDisplay.Text = $"{firstNumber} {currentOperator}";
+                    }
+                    else
+                    {
+                        ResultDisplay.Text = "0";
+                    }
+                }
+                else
+                {
+                    // Hala karakter varsa güncelle
+                    if (currentOperator != "")
+                    {
+                        ResultDisplay.Text = $"{firstNumber} {currentOperator} {currentInput}";
+                    }
+                    else
+                    {
+                        ResultDisplay.Text = currentInput;
+                    }
+                }
+            }
+            return;
+        }
+        
         // Özel operatörler için erken kontrol
-        // Özel operatörler için erken kontrol
+        
         if (pressedButton.Text == "√")
         {
             double number = Double.Parse(currentInput != "" ? currentInput : ResultDisplay.Text);
